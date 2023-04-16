@@ -17,7 +17,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="test"
+        android:text="test123"
         android:background="#435EBE"
         android:layout_centerInParent="true"
         android:layout_alignTop="@+id/btn_scan"
