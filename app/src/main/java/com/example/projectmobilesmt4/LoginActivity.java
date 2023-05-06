@@ -7,15 +7,14 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
-import android.net.NetworkCapabilities;
 import android.net.Network;
+import android.net.NetworkCapabilities;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,7 +23,6 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.projectmobilesmt4.api.ApiInterface;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,54 +31,38 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
-
+    EditText username, password;
+    Button login;
+    TextView btn_reg;
     ProgressDialog progressDialog;
-    ApiInterface apiInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        TextView btnReg = (TextView) findViewById(R.id.btn_reg);
-        ImageView btnKembali = (ImageView) findViewById(R.id.tombol_kembali);
-        EditText username = (EditText) findViewById(R.id.l_edit1);
-        EditText password= (EditText) findViewById(R.id.l_edit2);
-        Button btnLog = (Button) findViewById(R.id.l_btnLog);
+        username = (EditText) findViewById(R.id.usernameEditText);
+        password = (EditText) findViewById(R.id.passwordEditText);
+        login = (Button) findViewById(R.id.loginButton);
+        btn_reg = (TextView) findViewById(R.id.btn_reg);
         progressDialog = new ProgressDialog(LoginActivity.this);
 
-        btnReg.setOnClickListener(new View.OnClickListener() {
+        btn_reg.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
+            public void onClick(View v) {
+                Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(registerIntent);
                 finish();
             }
         });
 
-        btnKembali.setOnClickListener(new View.OnClickListener() {
+        login.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this,ActivtyLandingPageActivity.class));
-                finish();
-            }
-        });
-
-        btnLog.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                if (TextUtils.isEmpty(usernameTxt.getText().toString())){
-//                    usernameTxt.setError("Username Harus Di Isi !");
-//                    return;
-//                }
-//
-//                if (TextUtils.isEmpty(passwordTxt.getText().toString())){
-//                    passwordTxt.setError("Password Harus Di Isi !");
-//                    return;
-//                }
-                String sUsername = username.getText().toString();
+            public void onClick(View v) {
+                String sEmail = username.getText().toString();
                 String sPassword = password.getText().toString();
-                CheckLogin(sUsername,sPassword);
 
+                CheckLogin(sEmail, sPassword);
             }
         });
     }
@@ -99,6 +81,7 @@ public class LoginActivity extends AppCompatActivity {
                                     Toast.makeText(getApplicationContext(), "Login Berhasil", Toast.LENGTH_SHORT).show();
                                     Intent dashboardIntent = new Intent(LoginActivity.this, DashboardActivity.class);
                                     startActivity(dashboardIntent);
+                                    finish();
                                 } else {
                                     Toast.makeText(getApplicationContext(), resp, Toast.LENGTH_SHORT).show();
                                 }
@@ -112,19 +95,17 @@ public class LoginActivity extends AppCompatActivity {
                 public void onErrorResponse(VolleyError error) {
 
                 }
-            }
-          )
-            {
+            }) {
                 @Nullable
                 @Override
-                protected Map<String, String> getParams() throws AuthFailureError{
+                protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String, String> params = new HashMap<>();
                     params.put("username", username);
                     params.put("password", password);
                     return params;
                 }
             };
-//
+
             VolleyConnection.getInstance(LoginActivity.this).addToRequestQue(stringRequest);
 
             new Handler().postDelayed(new Runnable() {
@@ -139,12 +120,13 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    public boolean checkNetworkConnection(){
+
+    public boolean checkNetworkConnection() {
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         Network network = connectivityManager.getActiveNetwork();
         NetworkCapabilities capabilities = connectivityManager.getNetworkCapabilities(network);
-        return (capabilities != null && (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
-                || capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)));
-
+        return (capabilities != null && (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) || capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)));
     }
+
+
 }

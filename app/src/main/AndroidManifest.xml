@@ -18,10 +18,8 @@
         tools:targetApi="33"
         android:usesCleartextTraffic="true">
         <activity
-<<<<<<< Updated upstream
-=======
             android:name=".LoginActivity"
-            android:exported="true"
+            android:exported="false"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
         </activity>
         <activity
@@ -32,16 +30,15 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+<!--        <activity-->
+<!--            android:name=".ActivtyLandingPageActivity"-->
+<!--            android:exported="false"-->
+<!--            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">-->
+<!--            <meta-data-->
+<!--                android:name="android.app.lib_name"-->
+<!--                android:value="" />-->
+<!--        </activity>-->
         <activity
-            android:name=".ActivtyLandingPageActivity"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
->>>>>>> Stashed changes
             android:name=".DashboardActivity"
             android:exported="false">
             <meta-data

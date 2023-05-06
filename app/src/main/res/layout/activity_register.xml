@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_putih"
-    tools:context=".LoginActivity">
+    tools:context=".RegisterActivity">
 
     <ImageView
         android:layout_width="wrap_content"
@@ -22,85 +22,111 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:clickable="true"
-        android:id="@+id/tombol_kembali"/>
+        android:id="@+id/r_tombolKembali"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:layout_below="@+id/register_bulat1"
         android:text="Selamat Datang"
-        android:textSize="30sp"
+        android:textSize="20sp"
         android:layout_centerHorizontal="true"
         android:fontFamily="@font/poppinssemibold"
         android:textColor="@android:color/black"
-        android:id="@+id/login_txt1"/>
+        android:id="@+id/register_txt1"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_below="@+id/login_txt1"
-        android:text="Silahkan Login Terlebih Dahulu"
-        android:textSize="13sp"
+        android:layout_below="@+id/register_txt1"
+        android:text="Silahkan Registrasi"
+        android:textSize="15sp"
         android:layout_centerHorizontal="true"
         android:fontFamily="@font/poppinsregular"
         android:textColor="@android:color/black"
-        android:id="@+id/login_txt2"/>
+        android:id="@+id/resigter_txt2"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="30dp"
-        android:layout_below="@id/login_txt2"
+        android:layout_below="@id/resigter_txt2"
         android:id="@+id/ly1">
 
         <EditText
-            android:id="@+id/usernameEditText"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/btn_cornerradius"
-            android:backgroundTint="@android:color/white"
-            android:fontFamily="@font/poppinsregular"
             android:hint="Username"
             android:inputType="text"
-            android:paddingLeft="15dp" />
-
+            android:fontFamily="@font/poppinsregular"
+            android:background="@drawable/btn_cornerradius"
+            android:backgroundTint="@android:color/white"
+            android:paddingLeft="15dp"
+            android:id="@+id/R_edt1"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
             android:hint="Passsword"
-            app:endIconMode="password_toggle"
             android:inputType="textPassword"
             android:fontFamily="@font/poppinsregular"
             android:background="@drawable/btn_cornerradius"
             android:backgroundTint="@android:color/white"
             android:paddingLeft="15dp"
-            android:id="@+id/passwordEditText"/>
-
+            android:id="@+id/R_edt2"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:fontFamily="@font/poppinsregular"
+            android:background="@drawable/btn_cornerradius"
+            android:backgroundTint="@android:color/white"
+            android:paddingLeft="15dp"
+            android:id="@+id/R_edt3"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:hint="No Hp"
+            android:inputType="number"
+            android:fontFamily="@font/poppinsregular"
+            android:background="@drawable/btn_cornerradius"
+            android:backgroundTint="@android:color/white"
+            android:paddingLeft="15dp"
+            android:id="@+id/R_edt4"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:hint="Konfirmasi Password"
+            android:inputType="textPassword"
+            android:fontFamily="@font/poppinsregular"
+            android:background="@drawable/btn_cornerradius"
+            android:backgroundTint="@android:color/white"
+            android:paddingLeft="15dp"
+            android:id="@+id/R_edt5"/>
     </LinearLayout>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/ly1"
-        android:layout_marginTop="70dp"
         android:layout_centerHorizontal="true"
-        android:text="Login"
+        android:text="Register"
         android:background="@drawable/btn_cornerradius"
         android:fontFamily="@font/poppinssemibold"
         android:textColor="@android:color/white"
         android:width="300dp"
         android:textSize="18sp"
-        android:onClick="login"
-        android:id="@+id/loginButton"/>
+        android:id="@+id/r_btnReg"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/loginButton"
+        android:layout_below="@id/r_btnReg"
         android:orientation="horizontal"
         android:gravity="center"
         android:layout_marginTop="30dp">
@@ -108,18 +134,18 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Belum Punya Akun? "
+            android:text="Sudah Punya Akun? "
             android:fontFamily="@font/poppinsregular"
             android:textSize="12sp"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Register"
+            android:text="Login"
             android:fontFamily="@font/poppinssemibold"
             android:textSize="12sp"
             android:textColor="@color/biru_main"
             android:clickable="true"
-            android:id="@+id/btn_reg"/>
+            android:id="@+id/r_tombolLogin"/>
     </LinearLayout>
 </RelativeLayout>
