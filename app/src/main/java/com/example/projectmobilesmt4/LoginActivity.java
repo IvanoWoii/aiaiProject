@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkCapabilities;
@@ -35,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
     Button login;
     TextView btn_reg;
     ProgressDialog progressDialog;
+    SharedPreferences cekData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +67,14 @@ public class LoginActivity extends AppCompatActivity {
                 CheckLogin(sEmail, sPassword);
             }
         });
+
+        cekData = getSharedPreferences("login_session", MODE_PRIVATE);
+                if(cekData.getString("username", null) != null){
+                    startActivity(new Intent(LoginActivity.this,DashboardActivity.class));
+                    finish();
+                } else {
+
+                }
     }
 
     public void CheckLogin(final String username, final String password) {
@@ -77,11 +87,38 @@ public class LoginActivity extends AppCompatActivity {
                             try {
                                 JSONObject jsonObject = new JSONObject(response);
                                 String resp = jsonObject.getString("server_response");
+                                String respData = jsonObject.getString("data");
                                 if (resp.equals("[{\"status\":\"OK\"}]")) {
-                                    Toast.makeText(getApplicationContext(), "Login Berhasil", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), "Login berhasil", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), respData, Toast.LENGTH_SHORT).show();
                                     Intent dashboardIntent = new Intent(LoginActivity.this, DashboardActivity.class);
                                     startActivity(dashboardIntent);
-                                    finish();
+
+                                    try {
+                                        //mengambil data json
+                                        String jsonString = "{\"id\":\"1\",\"username\":\"ivano\",\"email\":\"rezaivano123@gmail.com\",\"password\":\"123\"}";
+
+                                        //parsing data
+                                        JSONObject jsonObject1 = new JSONObject(jsonString);
+
+                                        //ambil data/nilai
+                                        int idJson = jsonObject1.getInt("id");
+                                        String usernameJson = jsonObject1.getString("username");
+                                        String emailJson = jsonObject1.getString("email");
+                                        String pasJson = jsonObject1.getString("password");
+
+                                        getSharedPreferences("login_session", MODE_PRIVATE)
+                                                .edit()
+                                                .putInt("id",idJson)
+                                                .putString("username", usernameJson)
+                                                .putString("email", emailJson)
+                                                .putString("password",pasJson)
+                                                .apply();
+
+                                    } catch (JSONException e){
+                                        e.printStackTrace();
+                                    }
+
                                 } else {
                                     Toast.makeText(getApplicationContext(), resp, Toast.LENGTH_SHORT).show();
                                 }
