@@ -1,97 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#435EBE"
+    android:background="@color/background_putih"
     tools:context=".ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:id="@+id/bulatProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/bulat_lingkaran"
+        android:layout_alignParentLeft="true"/>
     <ImageView
         android:id="@+id/tombolLogout"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:src="@drawable/ic_baseline_logout_24"
+        android:layout_toRightOf="@+id/bulatProfile"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="20dp"
+        android:clickable="true"/>
+
     <ImageView
         android:id="@+id/logoProfile"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="100dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_below="@+id/bulatProfile"
+        android:layout_centerHorizontal="true"
         android:src="@drawable/logosmt4"
-        android:background="@drawable/bg_pp"
-        android:layout_centerHorizontal="true"/>
+        android:background="@drawable/bg_pp"/>
 
     <TextView
-        android:id="@+id/usernameTextView"
+        android:id="@+id/usernameProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/logoProfile"
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
-        android:text="Username"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:fontFamily="@font/poppinsbold" />
-    <TextView
-        android:id="@+id/usernameUserTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/usernameTextView"
-        android:layout_marginTop="5dp"
-        android:layout_centerHorizontal="true"
-        android:text="Username"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        android:fontFamily="@font/poppinssemibold" />
+        android:text="username_profile"
+        android:fontFamily="@font/poppinsbold"
+        android:textSize="18sp"/>
 
     <TextView
-        android:id="@+id/emailTextView"
+        android:id="@+id/emailProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/usernameUserTextView"
-        android:layout_marginTop="20dp"
+        android:layout_below="@+id/usernameProfile"
         android:layout_centerHorizontal="true"
-        android:text="Email"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:fontFamily="@font/poppinsbold" />
-    <TextView
-        android:id="@+id/emailUserTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/emailTextView"
-        android:layout_marginTop="5dp"
-        android:layout_centerHorizontal="true"
-        android:text="Email"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        android:fontFamily="@font/poppinssemibold" />
-
-    <TextView
-        android:id="@+id/noHPTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/emailUserTextView"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"
-        android:text="NO HP"
-        android:textColor="@color/white"
-        android:textSize="20sp"
+        android:text="email_profile"
         android:fontFamily="@font/poppinssemibold"
-        android:textStyle="bold"/>
+        android:textSize="12sp"/>
+
     <TextView
-        android:id="@+id/noHPUserTextView"
+        android:id="@+id/settingProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/noHPTextView"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="100dp"
         android:layout_centerHorizontal="true"
-        android:text="NO HP"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        android:fontFamily="@font/poppinssemibold" />
+        android:text="PROFILE"
+        android:fontFamily="@font/poppinsbold"
+        android:textSize="50sp"
+        android:textStyle="bold"/>
 
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@+id/emailProfile"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        app:cardCornerRadius="20dp"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true">
+
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_people_24"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="akwokawokaw"
+            android:fontFamily="@font/poppinsbold"
+            android:textSize="16sp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_arrow_forward_24"
+                android:layout_gravity="center_vertical|end"
+                android:layout_marginRight="15dp"/>
+
+    </androidx.cardview.widget.CardView>
 </RelativeLayout>

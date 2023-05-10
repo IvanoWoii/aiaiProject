@@ -21,7 +21,7 @@ import com.journeyapps.barcodescanner.ScanOptions;
 
 
 public class HomeFragment extends Fragment {
-   Button btn_scan,btn_test;
+   Button btn_scan;
    EditText txt1;
 
     @Override
@@ -31,26 +31,10 @@ public class HomeFragment extends Fragment {
         View view1 = inflater.inflate(R.layout.fragment_home, container, false);
 
         btn_scan = (Button) view1.findViewById(R.id.btn_scan);
-        btn_test = (Button) view1.findViewById(R.id.btn_test1);
-        txt1 = (EditText) view1.findViewById(R.id.txt_username);
+        txt1 = (EditText) view1.findViewById(R.id.txt_nomorMeter);
         btn_scan.setOnClickListener(view -> {
             scanCode();
         });
-
-        btn_test.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SharedPreferences sharedPreferences = getContext().getSharedPreferences("login_session", Context.MODE_PRIVATE);
-                int idJson = sharedPreferences.getInt("id",0);
-                String usernameJson = sharedPreferences.getString("username","");
-                String emailJson = sharedPreferences.getString("email","");
-
-                String toastMSG = idJson + " " +usernameJson+ " "+emailJson;
-
-                Toast.makeText(getActivity(), toastMSG, Toast.LENGTH_SHORT).show();
-            }
-        });
-
 
         return view1;
     }
