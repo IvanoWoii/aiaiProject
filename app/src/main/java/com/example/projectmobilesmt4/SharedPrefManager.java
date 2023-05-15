@@ -14,8 +14,9 @@ public class SharedPrefManager {
     //the constants
     private static final String SHARED_PREF_NAME = "aiaiTEAM";
     private static final String KEY_USERNAME = "keyusername";
-    private static final String KEY_EMAIL = "keyemail";
+    private static final String KEY_NAMA = "keyemail";
     private static final String KEY_ID = "keyid";
+    private static final String KEY_UNIT_INDUK ="keyunitinduk";
 
     private static SharedPrefManager mInstance;
     private static Context mCtx;
@@ -36,9 +37,10 @@ public class SharedPrefManager {
     public void userLogin(User user) {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt(KEY_ID, user.getId());
+        editor.putInt(KEY_ID, user.getKode_user());
         editor.putString(KEY_USERNAME, user.getUsername());
-        editor.putString(KEY_EMAIL, user.getEmail());
+        editor.putString(KEY_NAMA, user.getNama());
+        editor.putString(KEY_UNIT_INDUK, user.getUnit_induk());
         editor.apply();
     }
 
@@ -54,7 +56,8 @@ public class SharedPrefManager {
         return new User(
                 sharedPreferences.getInt(KEY_ID, -1),
                 sharedPreferences.getString(KEY_USERNAME, null),
-                sharedPreferences.getString(KEY_EMAIL, null)
+                sharedPreferences.getString(KEY_NAMA, null),
+                sharedPreferences.getString(KEY_UNIT_INDUK, null)
         );
     }
 

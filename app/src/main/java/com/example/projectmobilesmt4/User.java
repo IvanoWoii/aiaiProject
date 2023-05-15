@@ -1,26 +1,29 @@
 package com.example.projectmobilesmt4;
 
 public class User {
-    private int id;
-    private String username,email,password;
+    private int kode_user;
+    private String username,nama, unitInduk;
 
-    public User(int id, String username, String email){
-        this.id=id;
+    public User(int kode_user, String username, String nama, String unit_induk){
+        this.kode_user=kode_user;
         this.username=username;
-        this.email=email;
-        this.password=password;
+        this.nama=nama;
+        this.unitInduk=unit_induk;
     }
 
-    public int getId() {
-        return id;
+    public int getKode_user() {
+        return kode_user;
+    }
+
+    public String getNama() {
+        return nama;
     }
 
     public String getUsername() {
         return username;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUnit_induk() {
+        return unitInduk;
     }
-
 }

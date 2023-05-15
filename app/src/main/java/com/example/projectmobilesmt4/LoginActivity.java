@@ -50,6 +50,11 @@ public class LoginActivity extends AppCompatActivity {
         btn_reg = (TextView) findViewById(R.id.btn_reg);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
+        if (SharedPrefManager.getInstance(this).isLoggedIn()) {
+            finish();
+            startActivity(new Intent(this, DashboardActivity.class));
+        }
+
         btn_reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,9 +104,10 @@ public class LoginActivity extends AppCompatActivity {
                                 JSONObject userJson = obj.getJSONObject("user");
 
                                 User user = new User(
-                                        userJson.getInt("id"),
+                                        userJson.getInt("kode_user"),
+                                        userJson.getString("nama"),
                                         userJson.getString("username"),
-                                        userJson.getString("email")
+                                        userJson.getString("unit_induk")
                                 );
 
                                 SharedPrefManager.getInstance(getApplicationContext()).userLogin(user);

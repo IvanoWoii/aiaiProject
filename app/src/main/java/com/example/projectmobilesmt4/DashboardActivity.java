@@ -24,10 +24,7 @@ public class DashboardActivity extends AppCompatActivity {
         binding = ActivityDashboardBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        if (!SharedPrefManager.getInstance(this).isLoggedIn()) {
-            finish();
-            startActivity(new Intent(this, LoginActivity.class));
-        }
+
 
         replaceFragment(new HomeFragment());
         binding.bottomNavigationView.setBackground(null);
@@ -68,7 +65,7 @@ public class DashboardActivity extends AppCompatActivity {
                 .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // Menutup aplikasi
-                        finish();
+                        finishAffinity();
                     }
                 })
                 .setNegativeButton("Tidak", null)

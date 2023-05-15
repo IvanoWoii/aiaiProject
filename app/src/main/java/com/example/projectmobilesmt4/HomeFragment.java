@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -66,13 +67,7 @@ public class HomeFragment extends Fragment {
         btn_tambahData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String sNomor_meter = nomor_meter.getText().toString();
-                String sKriteria_garansi = kriteria_garansi.getText().toString();
-                String sGangguan = gangguan.getText().toString();
-                String sTahun_buat = tahun_buat.getText().toString();
-                String sTahun_ganti_meter = tahun_ganti_meter.getText().toString();
-
-//                TambahData(sNomor_meter, sKriteria_garansi, sGangguan, sTahun_buat, sTahun_ganti_meter);
+                tambahData();
             }
         });
 
@@ -91,69 +86,85 @@ public class HomeFragment extends Fragment {
     ActivityResultLauncher<ScanOptions> barLaucher = registerForActivityResult(new ScanContract(), result -> {
         if(result.getContents() != null){
             nomor_meter.setText(result.getContents());
-//            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-//            builder.setTitle("Result");
-//            builder.setMessage(result.getContents());
-//            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialogInterface, int i) {
-//                    dialogInterface.dismiss();
-//                }
-//            }).show();
         }
     });
 
+    private void tambahData(){
+        final String sNomor_meter = nomor_meter.getText().toString().trim();
+        final String sKriteria_garansi = kriteria_garansi.getText().toString().trim();
+        final String sGangguan = gangguan.getText().toString().trim();
+        final String sTahun_buat = tahun_buat.getText().toString().trim();
+        final String sTahun_ganti_meter = tahun_ganti_meter.getText().toString().trim();
 
+        //validasi form
 
-//    public void TambahData(final String nomor_meter, final String kriteria_garansi, final String gangguan, final String tahun_buat, final String tahun_ganti_meter) {
-//        if(checkNetworkConnection()){
-//            StringRequest stringRequest = new StringRequest(Request.Method.POST, DbContract.SERVER_ADD_DATA_URL,
-//                    new Response.Listener<String>() {
-//                        @Override
-//                        public void onResponse(String response) {
-//                            try {
-//                                JSONObject jsonObject = new JSONObject(response);
-//                                String resp = jsonObject.getString("server_response");
-//                                if (resp.equals("[{\"status\":\"OK\"}]")) {
-//                                    Toast.makeText(getActivity(), "Tambah Data Berhasil", Toast.LENGTH_SHORT).show();
-//                                } else {
-//                                    Toast.makeText(getActivity(), resp, Toast.LENGTH_SHORT).show();
-//                                }
-//                            } catch (JSONException e) {
-//                                Log.e("JSON Error", "Error parsin JSON: " + e.getMessage());
-//                            }
-//                        }
-//                    }, new Response.ErrorListener() {
-//                @Override
-//                public void onErrorResponse(VolleyError error) {
-//
-//                }
-//            }) {
-//                @Nullable
-//                @Override
-//                protected Map<String, String> getParams() throws AuthFailureError {
-//                    Map<String, String> params = new HashMap<>();
-//                    params.put("nomor_meter", nomor_meter);
-//                    params.put("kriteria_garansi", kriteria_garansi);
-//                    params.put("gangguan", gangguan);
-//                    params.put("tahun_buat", tahun_buat);
-//                    params.put("tahun_ganti_meter", tahun_ganti_meter);
-//                    return params;
-//                }
-//            };
-//
-//            VolleyConnection.getInstance(getActivity()).addToRequestQue(stringRequest);
-//
-//        } else {
-//            Toast.makeText(getActivity(), "Sambungan Gagal", Toast.LENGTH_SHORT).show();
-//        }
-//    }
+        if(TextUtils.isEmpty(sNomor_meter)){
+            nomor_meter.setError("Nomor Meter Tidak Boleh Kosong");
+            nomor_meter.requestFocus();
+            return;
+        }
+        if(TextUtils.isEmpty(sKriteria_garansi)){
+            kriteria_garansi.setError("pastikan berisi garansi / tidak garansi");
+            kriteria_garansi.requestFocus();
+            return;
+        }
+        if(TextUtils.isEmpty(sGangguan)){
+            gangguan.setError("Field ini harus di isi");
+            gangguan.requestFocus();
+            return;
+        }
+        if(TextUtils.isEmpty(sTahun_buat)){
+            tahun_buat.setError("Field ini harus di isi");
+            tahun_buat.requestFocus();
+            return;
+        }
+        if(TextUtils.isEmpty(sTahun_ganti_meter)){
+            tahun_ganti_meter.setError("Field ini harus di isi");
+            tahun_ganti_meter.requestFocus();
+            return;
+        }
 
-    public boolean checkNetworkConnection() {
-        Context context = getContext();
-        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        Network network = connectivityManager.getActiveNetwork();
-        NetworkCapabilities capabilities = connectivityManager.getNetworkCapabilities(network);
-        return (capabilities != null && (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) || capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)));
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, DbContract.URL_CREATEDATA,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject obj = new JSONObject(response);
+
+                            if (!obj.getBoolean("error")) {
+                                Toast.makeText(getActivity(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+
+                                nomor_meter.setText("");
+                                kriteria_garansi.setText("");
+                                gangguan.setText("");
+                                tahun_buat.setText("");
+                                tahun_ganti_meter.setText("");
+                            } else {
+                                Toast.makeText(getActivity(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getActivity(), error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        })  {
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("no_meter", sNomor_meter);
+                params.put("kriteria_garansi", sKriteria_garansi);
+                params.put("gangguan", sGangguan);
+                params.put("tahun_buat", sTahun_buat);
+                params.put("tahun_ganti", sTahun_ganti_meter);
+                return params;
+            }
+        };
+
+        VolleySingleton.getInstance(getActivity()).addToRequestQueue(stringRequest);
     }
+
 }

@@ -38,7 +38,7 @@ import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText username, email, password, confirmPassword;
+    private EditText username, email, password, nama, unit_induk, up3, ulp, confirmPassword;
     private Button btn_daftar;
     private TextView btn_kembali;
     ProgressBar progressBar;
@@ -48,8 +48,11 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        nama = findViewById(R.id.namaEditText);
+        unit_induk = findViewById(R.id.unitIndukEditTect);
+        up3 = findViewById(R.id.up3EditText);
+        ulp = findViewById(R.id.ulpEditText);
         username = findViewById(R.id.usernameEditText);
-        email = findViewById(R.id.emailEditText);
         password = findViewById(R.id.passwordEditText);
         confirmPassword = findViewById(R.id.konfirmasiPasswordEditText);
         btn_daftar = findViewById(R.id.btnReg);
@@ -74,32 +77,56 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void registerUser() {
+        final String sNama = nama.getText().toString().trim();
+        final String sUnitInduk = unit_induk.getText().toString().trim();
+        final String sUp3 = up3.getText().toString().trim();
+        final String sUlp = ulp.getText().toString().trim();
         final String sUsername = username.getText().toString().trim();
         final String sEmail = email.getText().toString().trim();
         final String sPassword = password.getText().toString().trim();
+        final String sConfrimPassword = confirmPassword.getText().toString().trim();
 
         //valdiasi form
+        if(TextUtils.isEmpty(sNama)){
+            nama.setText("Nama Harus Di isi");
+            nama.requestFocus();
+            return;
+        }
+
+        if(TextUtils.isEmpty(sUnitInduk)){
+            unit_induk.setError("unit induk harus di isi");
+            unit_induk.requestFocus();
+            return;
+        }
+
+        if(TextUtils.isEmpty(sUp3)){
+            up3.setError("field ini harus di isi");
+            up3.requestFocus();
+            return;
+        }
+
+        if(TextUtils.isEmpty(sUlp)){
+            ulp.setError("field ini harus di isi");
+            ulp.requestFocus();
+            return;
+        }
+
         if (TextUtils.isEmpty(sUsername)) {
             username.setError("Please enter username");
             username.requestFocus();
             return;
         }
 
-        if (TextUtils.isEmpty(sEmail)) {
-            email.setError("Please enter your email");
-            email.requestFocus();
-            return;
-        }
-
-        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(sEmail).matches()) {
-            email.setError("Enter a valid email");
-            email.requestFocus();
-            return;
-        }
 
         if (TextUtils.isEmpty(sPassword)) {
             password.setError("Enter a password");
             password.requestFocus();
+            return;
+        }
+
+        if(TextUtils.equals(sPassword, sConfrimPassword)){
+            confirmPassword.setError("Pastikan Password sama");
+            confirmPassword.requestFocus();
             return;
         }
 
@@ -133,9 +160,12 @@ public class RegisterActivity extends AppCompatActivity {
         }) {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
+                params.put("nama", sNama);
+                params.put("unit_induk", sUnitInduk);
+                params.put("up3", sUp3);
+                params.put("ulp", sUlp);
                 params.put("username", sUsername);
-                params.put("email", sEmail);
-                params.put("password", sPassword);
+                params.put("password", sPassword );
                 return params;
             }
         };

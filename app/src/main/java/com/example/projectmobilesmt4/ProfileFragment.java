@@ -22,7 +22,7 @@ import java.util.Map;
 
 public class ProfileFragment extends Fragment {
     private ImageView btnLog;
-    TextView usernameTxt,emailTxt;
+    TextView usernameTxt,emailTxt,noInduk;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -33,13 +33,15 @@ public class ProfileFragment extends Fragment {
         btnLog = (ImageView) view.findViewById(R.id.tombolLogout);
         usernameTxt = (TextView) view.findViewById(R.id.usernameProfile);
         emailTxt = (TextView) view.findViewById(R.id.emailProfile);
+        noInduk = (TextView) view.findViewById(R.id.unitIndukProfile);
 
         //get data user
         User user = SharedPrefManager.getInstance(getActivity()).getUser();
 
         //memasukan data user ke textView
         usernameTxt.setText(String.valueOf(user.getUsername()));
-        emailTxt.setText(String.valueOf(user.getEmail()));
+        emailTxt.setText(String.valueOf(user.getNama()));
+        noInduk.setText(String.valueOf(user.getUnit_induk()));
 
         btnLog.setOnClickListener(new View.OnClickListener() {
             @Override

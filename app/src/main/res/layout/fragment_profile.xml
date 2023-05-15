@@ -53,6 +53,15 @@
         android:text="email_profile"
         android:fontFamily="@font/poppinssemibold"
         android:textSize="12sp"/>
+    <TextView
+        android:id="@+id/unitIndukProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/emailProfile"
+        android:layout_centerHorizontal="true"
+        android:text="noinduk_profile"
+        android:fontFamily="@font/poppinssemibold"
+        android:textSize="12sp"/>
 
     <TextView
         android:id="@+id/settingProfile"

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,6 +7,9 @@
     android:background="@color/background_putih"
     tools:context=".RegisterActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -54,6 +57,86 @@
         android:layout_below="@id/resigter_txt2"
         android:id="@+id/ly1">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:text="Nama"
+            android:fontFamily="@font/poppinsbold"
+            android:textSize="18sp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Nama"
+            android:inputType="text"
+            android:fontFamily="@font/poppinsregular"
+            android:background="@drawable/btn_cornerradius"
+            android:backgroundTint="@android:color/white"
+            android:paddingLeft="15dp"
+            android:id="@+id/namaEditText"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="30dp"
+            android:text="Unit Induk"
+            android:fontFamily="@font/poppinsbold"
+            android:textSize="18sp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Unit Induk"
+            android:inputType="text"
+            android:fontFamily="@font/poppinsregular"
+            android:background="@drawable/btn_cornerradius"
+            android:backgroundTint="@android:color/white"
+            android:paddingLeft="15dp"
+            android:id="@+id/unitIndukEditTect"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="30dp"
+            android:text="UP3"
+            android:fontFamily="@font/poppinsbold"
+            android:textSize="18sp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="UP3"
+            android:inputType="text"
+            android:fontFamily="@font/poppinsregular"
+            android:background="@drawable/btn_cornerradius"
+            android:backgroundTint="@android:color/white"
+            android:paddingLeft="15dp"
+            android:id="@+id/up3EditText"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="30dp"
+            android:text="ULP"
+            android:fontFamily="@font/poppinsbold"
+            android:textSize="18sp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="ULP"
+            android:inputType="text"
+            android:fontFamily="@font/poppinsregular"
+            android:background="@drawable/btn_cornerradius"
+            android:backgroundTint="@android:color/white"
+            android:paddingLeft="15dp"
+            android:id="@+id/ulpEditText"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="30dp"
+            android:text="Username"
+            android:fontFamily="@font/poppinsbold"
+            android:textSize="18sp"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -64,33 +147,36 @@
             android:backgroundTint="@android:color/white"
             android:paddingLeft="15dp"
             android:id="@+id/usernameEditText"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="30dp"
+            android:text="Password"
+            android:fontFamily="@font/poppinsbold"
+            android:textSize="18sp"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:hint="Passsword"
+            android:hint="Password"
             android:inputType="textPassword"
             android:fontFamily="@font/poppinsregular"
             android:background="@drawable/btn_cornerradius"
             android:backgroundTint="@android:color/white"
             android:paddingLeft="15dp"
             android:id="@+id/passwordEditText"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="30dp"
+            android:text="Konfirmasi Password"
+            android:fontFamily="@font/poppinsbold"
+            android:textSize="18sp"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:fontFamily="@font/poppinsregular"
-            android:background="@drawable/btn_cornerradius"
-            android:backgroundTint="@android:color/white"
-            android:paddingLeft="15dp"
-            android:id="@+id/emailEditText"/>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
             android:hint="Konfirmasi Password"
             android:inputType="textPassword"
             android:fontFamily="@font/poppinsregular"
@@ -127,6 +213,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/btnReg"
+        android:layout_marginBottom="50dp"
         android:orientation="horizontal"
         android:gravity="center"
         android:layout_marginTop="30dp">
@@ -149,4 +236,5 @@
             android:id="@+id/r_tombolLogin"/>
 
     </LinearLayout>
-</RelativeLayout>
+    </RelativeLayout>
+</ScrollView>
