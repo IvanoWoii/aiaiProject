@@ -7,4 +7,5 @@ public class DbContract {
     public static final String URL_REGISTER = ROOT_URL + "signup";
     public static final String URL_LOGIN= ROOT_URL + "login";
     public static final String URL_CREATEDATA = ROOT_URL + "createData";
+    public static final String URL_GET_DATA = ROOT_URL + "getData";
 }

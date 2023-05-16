@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -36,6 +37,9 @@ import com.journeyapps.barcodescanner.ScanOptions;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -58,8 +62,6 @@ public class HomeFragment extends Fragment {
         tahun_buat = (EditText) view1.findViewById(R.id.txt_tahunBuat);
         tahun_ganti_meter = (EditText) view1.findViewById(R.id.txt_tahunGantiMeter);
 
-
-
         btn_scan.setOnClickListener(view -> {
             scanCode();
         });
@@ -67,6 +69,7 @@ public class HomeFragment extends Fragment {
         btn_tambahData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 tambahData();
             }
         });
@@ -95,6 +98,12 @@ public class HomeFragment extends Fragment {
         final String sGangguan = gangguan.getText().toString().trim();
         final String sTahun_buat = tahun_buat.getText().toString().trim();
         final String sTahun_ganti_meter = tahun_ganti_meter.getText().toString().trim();
+
+        Calendar calendar = Calendar.getInstance();
+        Date today = calendar.getTime();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String dateSekarang = dateFormat.format(today);
+        final String sDateSekarang = dateSekarang;
 
         //validasi form
 
@@ -160,6 +169,7 @@ public class HomeFragment extends Fragment {
                 params.put("gangguan", sGangguan);
                 params.put("tahun_buat", sTahun_buat);
                 params.put("tahun_ganti", sTahun_ganti_meter);
+                params.put("data_dibuat", sDateSekarang);
                 return params;
             }
         };

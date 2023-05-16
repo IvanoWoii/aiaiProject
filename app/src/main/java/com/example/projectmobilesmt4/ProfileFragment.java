@@ -21,8 +21,8 @@ import java.util.Map;
 
 
 public class ProfileFragment extends Fragment {
-    private ImageView btnLog;
     TextView usernameTxt,emailTxt,noInduk;
+    Button btn_logout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -30,7 +30,7 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        btnLog = (ImageView) view.findViewById(R.id.tombolLogout);
+        btn_logout = (Button) view.findViewById(R.id.btnLogProfile);
         usernameTxt = (TextView) view.findViewById(R.id.usernameProfile);
         emailTxt = (TextView) view.findViewById(R.id.emailProfile);
         noInduk = (TextView) view.findViewById(R.id.unitIndukProfile);
@@ -39,21 +39,21 @@ public class ProfileFragment extends Fragment {
         User user = SharedPrefManager.getInstance(getActivity()).getUser();
 
         //memasukan data user ke textView
-        usernameTxt.setText(String.valueOf(user.getUsername()));
-        emailTxt.setText(String.valueOf(user.getNama()));
-        noInduk.setText(String.valueOf(user.getUnit_induk()));
+        usernameTxt.setText("Username : " + String.valueOf(user.getUsername()));
+        emailTxt.setText("Nama : " + String.valueOf(user.getNama()));
+        noInduk.setText("Unit Induk : " + String.valueOf(user.getUnit_induk()));
 
-        btnLog.setOnClickListener(new View.OnClickListener() {
+        btn_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Membuat objek AlertDialog
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-// Mengatur judul dan pesan pada dialog
+                // Mengatur judul dan pesan pada dialog
                 builder.setTitle("Konfirmasi Keluar");
                 builder.setMessage("Anda yakin ingin keluar?");
 
-// Menambahkan tombol "Ya"
+                // Menambahkan tombol "Ya"
                 builder.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -65,7 +65,7 @@ public class ProfileFragment extends Fragment {
                     }
                 });
 
-// Menambahkan tombol "Tidak"
+                // Menambahkan tombol "Tidak"
                 builder.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -73,11 +73,11 @@ public class ProfileFragment extends Fragment {
                     }
                 });
 
-// Membuat dan menampilkan dialog
+                // Membuat dan menampilkan dialog
                 AlertDialog dialog = builder.create();
                 dialog.show();
-
             }
+
         });
 
         return view;

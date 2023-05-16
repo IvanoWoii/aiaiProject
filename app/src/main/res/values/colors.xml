@@ -7,6 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="kuning">#FDB623</color>
     <color name="biru_main">#435EBE</color>
+    <color name="abu">#3E3E42</color>
+    <color name="abu2">#333333</color>
+    <color name="merah">#DF2E38</color>
     <color name="background_putih">#E5E5E5</color>
 </resources>

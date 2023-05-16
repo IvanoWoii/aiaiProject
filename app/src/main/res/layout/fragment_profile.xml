@@ -4,32 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_putih"
+    android:background="@color/biru_main"
     tools:context=".ProfileFragment">
 
     <ImageView
         android:id="@+id/bulatProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/bulat_lingkaran"
+        android:src="@drawable/bulat_abu"
         android:layout_alignParentLeft="true"/>
-    <ImageView
-        android:id="@+id/tombolLogout"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:src="@drawable/ic_baseline_logout_24"
-        android:layout_toRightOf="@+id/bulatProfile"
-        android:layout_alignParentRight="true"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="20dp"
-        android:clickable="true"/>
 
     <ImageView
         android:id="@+id/logoProfile"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_below="@+id/bulatProfile"
-        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
         android:src="@drawable/logosmt4"
         android:background="@drawable/bg_pp"/>
 
@@ -37,47 +27,55 @@
         android:id="@+id/usernameProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/logoProfile"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"
+        android:layout_toRightOf="@+id/logoProfile"
+        android:layout_below="@+id/bulatProfile"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="15dp"
         android:text="username_profile"
+        android:textColor="@color/white"
         android:fontFamily="@font/poppinsbold"
-        android:textSize="18sp"/>
+        android:textSize="20sp"/>
 
     <TextView
         android:id="@+id/emailProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/usernameProfile"
-        android:layout_centerHorizontal="true"
+        android:layout_toRightOf="@+id/logoProfile"
+        android:layout_marginLeft="20dp"
         android:text="email_profile"
-        android:fontFamily="@font/poppinssemibold"
-        android:textSize="12sp"/>
+        android:textColor="@color/white"
+        android:fontFamily="@font/poppinsmedium"
+        android:textSize="15sp"/>
     <TextView
         android:id="@+id/unitIndukProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/emailProfile"
-        android:layout_centerHorizontal="true"
+        android:layout_toRightOf="@+id/logoProfile"
+        android:layout_marginLeft="20dp"
         android:text="noinduk_profile"
-        android:fontFamily="@font/poppinssemibold"
-        android:textSize="12sp"/>
+        android:textColor="@color/white"
+        android:fontFamily="@font/poppinsmedium"
+        android:textSize="15sp"/>
 
     <TextView
         android:id="@+id/settingProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
         android:layout_centerHorizontal="true"
         android:text="PROFILE"
+        android:textColor="@color/white"
         android:fontFamily="@font/poppinsbold"
         android:textSize="50sp"
         android:textStyle="bold"/>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView1"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_below="@+id/emailProfile"
+        android:layout_below="@+id/logoProfile"
         android:clickable="true"
         android:focusable="true"
         android:layout_marginTop="100dp"
@@ -113,4 +111,17 @@
                 android:layout_marginRight="15dp"/>
 
     </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/btnLogProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cardView1"
+        android:layout_marginTop="189dp"
+        android:layout_marginRight="120dp"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="@color/merah"
+        android:text="LOG OUT"
+        android:fontFamily="@font/poppinsbold"
+        android:textSize="15sp"/>
 </RelativeLayout>

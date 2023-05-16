@@ -11,6 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/bulatAbu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/bulat_abu"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -24,21 +30,60 @@
             android:id="@+id/btn_cekData"
             android:layout_width="120dp"
             android:layout_height="120dp"
+            android:layout_marginTop="300dp"
             android:src="@drawable/ic_baseline_add_24"
             android:background="@drawable/bg_pp"
-            android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"/>
 
         <TextView
+            android:id="@+id/scanTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/btn_cekData"
             android:layout_marginTop="20dp"
             android:layout_centerHorizontal="true"
-            android:text="Klik Untuk Scan Barcode"
+            android:text="Klik + Untuk Scan Barcode"
             android:fontFamily="@font/poppinsbold"
             android:textSize="20sp"
             android:textColor="@color/white"/>
+
+        <EditText
+            android:id="@+id/nomorMeterLihatData"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="120dp"
+            android:paddingLeft="80dp"
+            android:layout_below="@+id/scanTextView"
+            android:layout_marginTop="30dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/costum_edittext"
+            android:backgroundTint="@color/white"
+            android:hint="Nomor Meter"/>
+
+        <TextView
+            android:id="@+id/textBawahEdittext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/nomorMeterLihatData"
+            android:text="PASTIKAN NOMOR METER BENAR"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppinsregular"
+            android:textSize="12sp"/>
+
+        <Button
+            android:id="@+id/btnCekData"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_below="@+id/textBawahEdittext"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="@color/kuning"
+            android:fontFamily="@font/poppinsbold"
+            android:text="CEK"
+            android:textColor="@color/black" />
     </RelativeLayout>
 
 
