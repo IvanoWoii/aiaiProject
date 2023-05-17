@@ -8,4 +8,5 @@ public class DbContract {
     public static final String URL_LOGIN= ROOT_URL + "login";
     public static final String URL_CREATEDATA = ROOT_URL + "createData";
     public static final String URL_GET_DATA = ROOT_URL + "getData";
+    public static final String URL_CEK_DATA = ROOT_URL + "cekData";
 }

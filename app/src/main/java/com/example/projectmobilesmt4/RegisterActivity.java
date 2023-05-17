@@ -38,7 +38,7 @@ import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText username, email, password, nama, unit_induk, up3, ulp, confirmPassword;
+    private EditText username, password, nama, unit_induk, up3, ulp, confirmPassword;
     private Button btn_daftar;
     private TextView btn_kembali;
     ProgressBar progressBar;
@@ -82,13 +82,12 @@ public class RegisterActivity extends AppCompatActivity {
         final String sUp3 = up3.getText().toString().trim();
         final String sUlp = ulp.getText().toString().trim();
         final String sUsername = username.getText().toString().trim();
-        final String sEmail = email.getText().toString().trim();
         final String sPassword = password.getText().toString().trim();
         final String sConfrimPassword = confirmPassword.getText().toString().trim();
 
         //valdiasi form
         if(TextUtils.isEmpty(sNama)){
-            nama.setText("Nama Harus Di isi");
+            nama.setError("Nama Harus Di isi");
             nama.requestFocus();
             return;
         }

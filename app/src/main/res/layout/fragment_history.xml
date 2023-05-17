@@ -13,21 +13,55 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
-        android:text="HISTROY"
+        android:text="LIST DATA"
         android:fontFamily="@font/poppinsbold"
         android:textColor="@color/white"
         android:textSize="22sp"/>
-    <ListView
-        android:id="@+id/list_view"
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/topTextView"
         android:layout_marginStart="10dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="65dp"
-        android:padding="12dp"
-        android:background="@color/white"
-        android:dividerHeight="7dp" />
+        android:layout_marginBottom="65dp">
+
+        <ListView
+            android:id="@+id/list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/topTextView"
+            android:padding="12dp"
+            android:background="@drawable/bg_box_putih"
+            android:divider="@drawable/divider_listview" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:progressTint="@color/kuning" />
+
+            <TextView
+                android:id="@+id/textProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/progressBar"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:text="Memuat Data Mohon Tunggu"
+                android:fontFamily="@font/poppinssemibold"
+                android:textColor="@color/black"
+                android:textSize="18sp"/>
+
+        </RelativeLayout>
+    </FrameLayout>
 
 </RelativeLayout>
