@@ -1,12 +1,16 @@
 package com.example.projectmobilesmt4;
 
 import android.app.Dialog;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +29,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 
 public class HistoryFragment extends Fragment {
@@ -34,7 +40,7 @@ public class HistoryFragment extends Fragment {
     private ArrayList<String> dataList;
     private ArrayAdapter<String> adapter;
     private ProgressBar progressBar;
-    private TextView textProgress;
+    private TextView textProgress,textJam;
     private static final int PROGRESS_DELAY = 2000;
 
     @Override
@@ -48,13 +54,42 @@ public class HistoryFragment extends Fragment {
         adapter = new ArrayAdapter<>(getActivity(), R.layout.list_data_master, dataList);
         progressBar = view.findViewById(R.id.progressBar);
         textProgress = (TextView) view.findViewById(R.id.textProgress);
+        textJam = (TextView) view.findViewById(R.id.tanggalJamTextView);
         listView.setAdapter(adapter);
 
+        //jam realtime
+        Handler handler = new Handler();
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                updateTanggalJam();
+                handler.postDelayed(this, 1000); // Perbarui setiap 1 detik
+            }
+        };
+        handler.postDelayed(runnable, 0); // Mulai perbarui tanggal dan jam
+
+        ConnectivityManager connectivityManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
             getData();
+        } else {
+            progressBar.setVisibility(View.GONE);
+            textProgress.setGravity(Gravity.CENTER);
+            textProgress.setText("Tidak Bisa Terhubung Ke Server Cek Kembali Koneksi Anda");
+        }
+
 
 
         return view;
     }
+
+    private void updateTanggalJam() {
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy HH:mm:ss");
+        String tanggalJam = dateFormat.format(calendar.getTime());
+        textJam.setText(tanggalJam);
+    }
+
 
     private void getData(){
         progressBar.setVisibility(View.VISIBLE);

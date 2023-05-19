@@ -21,7 +21,7 @@
             android:layout_marginBottom="60dp"
             app:cardCornerRadius="30dp"
             app:cardElevation="20dp"
-            android:background="@drawable/costum_edittext">
+            android:background="@drawable/bg_putih_stroke_abu">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -156,7 +156,8 @@
                     android:text="Scann"
                     android:textSize="18sp"
                     android:layout_marginTop="30dp"
-                    android:background="@drawable/btn_cornerradius"
+                    android:backgroundTint="@color/kuning"
+                    android:textColor="@color/black"
                     app:cornerRadius="20dp"
                     android:layout_gravity="center"/>
                 <Button
@@ -166,7 +167,8 @@
                     android:text="Tambah Data"
                     android:textSize="18sp"
                     android:layout_marginTop="30dp"
-                    android:background="@drawable/btn_cornerradius"
+                    android:backgroundTint="@color/biru_second"
+                    android:textColor="@color/black"
                     app:cornerRadius="20dp" />
 
             </LinearLayout>

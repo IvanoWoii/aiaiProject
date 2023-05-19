@@ -17,6 +17,17 @@
         android:fontFamily="@font/poppinsbold"
         android:textColor="@color/white"
         android:textSize="22sp"/>
+    <TextView
+        android:id="@+id/tanggalJamTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/topTextView"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:text="INI JAM"
+        android:textColor="@color/white"
+        android:fontFamily="@font/poppinsregular"/>
+
 
     <FrameLayout
         android:layout_width="match_parent"

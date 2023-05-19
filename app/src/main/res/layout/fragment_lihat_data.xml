@@ -43,7 +43,7 @@
             android:layout_below="@+id/btn_cekData"
             android:layout_marginTop="20dp"
             android:layout_centerHorizontal="true"
-            android:text="Klik Gambar DiatasUntuk Scan Barcode"
+            android:text="Klik Gambar Diatas Untuk Scan Barcode"
             android:fontFamily="@font/poppinsbold"
             android:textSize="15sp"
             android:textColor="@color/white"/>
@@ -59,7 +59,8 @@
             android:layout_centerHorizontal="true"
             android:background="@drawable/costum_edittext"
             android:backgroundTint="@color/white"
-            android:hint="Nomor Meter"/>
+            android:hint="Nomor Meter"
+            android:inputType="number"/>
 
         <TextView
             android:id="@+id/textBawahEdittext"
@@ -75,12 +76,12 @@
 
         <ImageView
             android:id="@+id/kotakPutih"
-            android:layout_width="250dp"
-            android:layout_height="180dp"
+            android:layout_width="350dp"
+            android:layout_height="200dp"
             android:layout_below="@+id/textBawahEdittext"
             android:layout_marginTop="50dp"
             android:layout_centerHorizontal="true"
-            android:background="@drawable/bg_putih_polos"/>
+            android:background="@drawable/bg_putih_stroke_abu"/>
 
         <TextView
             android:id="@+id/textNoMeter"
@@ -94,7 +95,7 @@
             android:layout_alignTop="@+id/kotakPutih"
             android:textColor="@color/black"
             android:fontFamily="@font/poppinsbold"
-            android:textSize="12sp"/>
+            android:textSize="14sp"/>
 
         <TextView
             android:id="@+id/textKriteriaGaransi"
@@ -107,7 +108,7 @@
             android:layout_alignLeft="@id/kotakPutih"
             android:textColor="@color/black"
             android:fontFamily="@font/poppinsbold"
-            android:textSize="12sp"/>
+            android:textSize="14sp"/>
 
         <TextView
             android:id="@+id/textGangguan"
@@ -120,7 +121,7 @@
             android:layout_alignLeft="@id/kotakPutih"
             android:textColor="@color/black"
             android:fontFamily="@font/poppinsbold"
-            android:textSize="12sp"/>
+            android:textSize="14sp"/>
 
         <TextView
             android:id="@+id/textTahunBuat"
@@ -133,7 +134,7 @@
             android:layout_alignLeft="@id/kotakPutih"
             android:textColor="@color/black"
             android:fontFamily="@font/poppinsbold"
-            android:textSize="12sp"/>
+            android:textSize="14sp"/>
 
         <TextView
             android:id="@+id/textTahunGanti"
@@ -146,7 +147,7 @@
             android:layout_alignLeft="@id/kotakPutih"
             android:textColor="@color/black"
             android:fontFamily="@font/poppinsbold"
-            android:textSize="12sp"/>
+            android:textSize="14sp"/>
 
         <TextView
             android:id="@+id/textHasilNoMeter"
@@ -158,7 +159,7 @@
             android:layout_alignTop="@id/textNoMeter"
             android:textColor="@color/black"
             android:fontFamily="@font/poppinsbold"
-            android:textSize="12sp"/>
+            android:textSize="14sp"/>
 
         <TextView
             android:id="@+id/textHasilKriteriGaransi"
@@ -171,7 +172,7 @@
             android:layout_alignTop="@id/textKriteriaGaransi"
             android:textColor="@color/black"
             android:fontFamily="@font/poppinsbold"
-            android:textSize="12sp"/>
+            android:textSize="14sp"/>
 
         <TextView
             android:id="@+id/textHasilGangguan"
@@ -184,7 +185,7 @@
             android:layout_alignTop="@id/textGangguan"
             android:textColor="@color/black"
             android:fontFamily="@font/poppinsbold"
-            android:textSize="12sp"/>
+            android:textSize="14sp"/>
 
         <TextView
             android:id="@+id/textHasilTahunBuat"
@@ -197,7 +198,7 @@
             android:layout_alignTop="@id/textTahunBuat"
             android:textColor="@color/black"
             android:fontFamily="@font/poppinsbold"
-            android:textSize="12sp"/>
+            android:textSize="14sp"/>
 
         <TextView
             android:id="@+id/textHasilTahunGanti"
@@ -210,7 +211,7 @@
             android:layout_alignTop="@id/textTahunGanti"
             android:textColor="@color/black"
             android:fontFamily="@font/poppinsbold"
-            android:textSize="12sp"/>
+            android:textSize="14sp"/>
 
         <Button
             android:id="@+id/btnCekData"

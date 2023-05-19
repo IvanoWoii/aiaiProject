@@ -37,7 +37,6 @@ public class LoginActivity extends AppCompatActivity {
     EditText username, password;
     Button login;
     TextView btn_reg;
-    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +47,6 @@ public class LoginActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.passwordEditText);
         login = (Button) findViewById(R.id.loginButton);
         btn_reg = (TextView) findViewById(R.id.btn_reg);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         if (SharedPrefManager.getInstance(this).isLoggedIn()) {
             finish();
@@ -94,7 +92,6 @@ public class LoginActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        progressBar.setVisibility(View.GONE);
                         try {
                             JSONObject obj = new JSONObject(response);
 
@@ -104,7 +101,7 @@ public class LoginActivity extends AppCompatActivity {
                                 JSONObject userJson = obj.getJSONObject("user");
 
                                 User user = new User(
-                                        userJson.getInt("kode_user"),
+                                        userJson.getString("kode_user"),
                                         userJson.getString("nama"),
                                         userJson.getString("username"),
                                         userJson.getString("unit_induk")

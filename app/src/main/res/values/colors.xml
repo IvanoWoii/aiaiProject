@@ -11,6 +11,8 @@
     <color name="biru_main">#435EBE</color>
     <color name="abu">#3E3E42</color>
     <color name="abu2">#333333</color>
+    <color name="abu3">#D2E9E9</color>
     <color name="merah">#DF2E38</color>
+    <color name="biru_second">#19A7CE</color>
     <color name="background_putih">#E5E5E5</color>
 </resources>

@@ -86,20 +86,18 @@
         app:cardElevation="4dp"
         app:cardUseCompatPadding="true">
 
-
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_people_24"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="15dp"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_people_24"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="15dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="akwokawokaw"
+            android:text="Cara Penggunaan Aplikasi"
             android:fontFamily="@font/poppinsbold"
             android:textSize="16sp"/>
 

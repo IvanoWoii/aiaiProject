@@ -59,6 +59,14 @@ public class RegisterActivity extends AppCompatActivity {
         btn_kembali = findViewById(R.id.r_tombolLogin);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
+        unit_induk.setText("Kalimantan Barat");
+        up3.setText("Pontianak");
+        ulp.setText("Menpewah");
+
+        unit_induk.setEnabled(false);
+        up3.setEnabled(false);
+        ulp.setEnabled(false);
+
         btn_kembali.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,6 +79,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 registerUser();
+
             }
         });
 
@@ -122,8 +131,13 @@ public class RegisterActivity extends AppCompatActivity {
             password.requestFocus();
             return;
         }
+        if(TextUtils.isEmpty(sConfrimPassword)){
+            confirmPassword.setError("Password harus di isi");
+            confirmPassword.requestFocus();
+            return;
+        }
 
-        if(TextUtils.equals(sPassword, sConfrimPassword)){
+        if(!TextUtils.equals(sPassword, sConfrimPassword)){
             confirmPassword.setError("Pastikan Password sama");
             confirmPassword.requestFocus();
             return;
@@ -140,10 +154,8 @@ public class RegisterActivity extends AppCompatActivity {
 
                             if (!obj.getBoolean("error")) {
                                 Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
-
                                 finish();
                                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-
                             } else {
                                 Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
                             }
