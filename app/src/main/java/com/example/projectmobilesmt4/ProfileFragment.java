@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -16,11 +17,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Map;
 
 
 public class ProfileFragment extends Fragment {
+
+    CardView btnInfo;
     TextView usernameTxt,emailTxt,noInduk;
     Button btn_logout;
 
@@ -34,6 +38,15 @@ public class ProfileFragment extends Fragment {
         usernameTxt = (TextView) view.findViewById(R.id.usernameProfile);
         emailTxt = (TextView) view.findViewById(R.id.emailProfile);
         noInduk = (TextView) view.findViewById(R.id.unitIndukProfile);
+        btnInfo = (CardView) view.findViewById(R.id.cardView1);
+
+        btnInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), Info.class));
+                getActivity().finish();
+            }
+        });
 
         //get data user
         User user = SharedPrefManager.getInstance(getActivity()).getUser();
@@ -62,6 +75,7 @@ public class ProfileFragment extends Fragment {
                         startActivity(intentLogout);
                         getActivity().finish();
                         SharedPrefManager.getInstance(getActivity()).logout();
+                        Toast.makeText(getActivity(), "Logout Berhasil", Toast.LENGTH_SHORT).show();
                     }
                 });
 

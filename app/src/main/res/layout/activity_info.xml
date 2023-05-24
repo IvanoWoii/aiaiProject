@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_putih"
+    tools:context=".Info">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="CARA PENGGUNAAN APLIKASI"
+            android:fontFamily="@font/poppinsbold"
+            android:textSize="25sp"/>
+
+        <TextView
+            android:id="@+id/HomeInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textTop"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="25dp"
+            android:text="Menu Home : "
+            android:textSize="20sp"
+            android:fontFamily="@font/poppinsbold"/>
+        <TextView
+            android:id="@+id/homeInfo1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/HomeInfo"
+            android:layout_alignTop="@+id/HomeInfo"
+            android:layout_marginRight="10dp"
+            android:text="1. No meter bisa di isi menggunakan tombol scan atau bisa juga di input secara manual"
+            android:textSize="15sp"
+            android:fontFamily="@font/poppinssemibold"/>
+        <TextView
+            android:id="@+id/homeInfo2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/homeInfo1"
+            android:layout_toRightOf="@+id/HomeInfo"
+            android:text="2. Untuk kriteria garansi pastikan untuk menginputkan 'garansi','Garansi' atau 'tidak garansi','Tidak garansi'"
+            android:textSize="15sp"
+            android:fontFamily="@font/poppinssemibold"/>
+        <TextView
+            android:id="@+id/homeInfo3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/homeInfo2"
+            android:layout_toRightOf="@+id/HomeInfo"
+            android:layout_marginRight="10dp"
+            android:text="3. Untuk field gangguan bisa di isi dengan keadaan yang ada contoh : meter konslet"
+            android:textSize="15sp"
+            android:fontFamily="@font/poppinssemibold"/>
+        <TextView
+            android:id="@+id/homeInfo4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/homeInfo3"
+            android:layout_toRightOf="@+id/HomeInfo"
+            android:text="4. Untuk Tahun buat masukan tahunnya saja contoh : 2023 "
+            android:textSize="15sp"
+            android:fontFamily="@font/poppinssemibold"/>
+        <TextView
+            android:id="@+id/homeInfo5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/homeInfo4"
+            android:layout_toRightOf="@+id/HomeInfo"
+            android:text="5. Untuk tahun ganti meter masukan tahunnya saja, contoh : 2027"
+            android:textSize="15sp"
+            android:fontFamily="@font/poppinssemibold"/>
+        <TextView
+            android:id="@+id/homeInfo6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/homeInfo5"
+            android:layout_toRightOf="@+id/HomeInfo"
+            android:text="6. Untuk menambahkan data ke server klik tombol Tambah data"
+            android:textSize="15sp"
+            android:fontFamily="@font/poppinssemibold"/>
+
+        <TextView
+            android:id="@+id/cekDatInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/homeInfo6"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="16dp"
+            android:text="Menu Cek data : "
+            android:fontFamily="@font/poppinssemibold"
+            android:textSize="20sp"/>
+        <TextView
+            android:id="@+id/cekDataInfo1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/cekDatInfo"
+            android:layout_toRightOf="@+id/cekDatInfo"
+            android:layout_marginRight="10dp"
+            android:text="1. Masukan nomor meter dengan cara klik tombol barcode untuk men scan nomor meter atau bisa juga di inputkan secara manual"
+            android:textSize="15sp"
+            android:fontFamily="@font/poppinssemibold"/>
+        <TextView
+            android:id="@+id/cekDataInfo2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cekDataInfo1"
+            android:layout_toRightOf="@+id/cekDatInfo"
+            android:layout_marginRight="10dp"
+            android:text="2. Klik tombol CEK untuk mengecek meter apakah sudah garansi atau belum"
+            android:textSize="15sp"
+            android:fontFamily="@font/poppinssemibold"/>
+
+        <Button
+            android:layout_width="260dp"
+            android:layout_height="60dp"
+            android:layout_below="@id/cekDataInfo2"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/btn_kembali"
+            android:text="TKembali"
+            android:textSize="18sp"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="@color/biru_second"
+            android:textColor="@color/black"
+            app:cornerRadius="20dp" />
+
+    </RelativeLayout>
+</ScrollView>
