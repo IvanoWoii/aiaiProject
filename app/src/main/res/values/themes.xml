@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.ProjectMobileSMT4" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.ProjectMobileSMT4" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/biru_main</item>
         <item name="colorPrimaryVariant">@color/biru_main</item>

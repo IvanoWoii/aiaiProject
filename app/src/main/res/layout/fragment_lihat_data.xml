@@ -60,7 +60,8 @@
             android:background="@drawable/costum_edittext"
             android:backgroundTint="@color/white"
             android:hint="Nomor Meter"
-            android:inputType="number"/>
+            android:inputType="number"
+            android:textColor="@color/black"/>
 
         <TextView
             android:id="@+id/textBawahEdittext"
