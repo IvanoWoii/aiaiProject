@@ -9,12 +9,17 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.SearchView;
@@ -41,6 +46,9 @@ public class HistoryFragment extends Fragment {
     private ArrayAdapter<String> adapter;
     private ProgressBar progressBar;
     private TextView textProgress,textJam;
+    private CustomFilter customFilter;
+    private EditText search;
+    private ImageView refresh;
     private static final int PROGRESS_DELAY = 2000;
 
     @Override
@@ -50,12 +58,39 @@ public class HistoryFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_history, container, false);
 
         listView = (ListView) view.findViewById(R.id.list_view);
-        dataList = new ArrayList<>();
-        adapter = new ArrayAdapter<>(getActivity(), R.layout.list_data_master, dataList);
         progressBar = view.findViewById(R.id.progressBar);
         textProgress = (TextView) view.findViewById(R.id.textProgress);
         textJam = (TextView) view.findViewById(R.id.tanggalJamTextView);
+        search = (EditText) view.findViewById(R.id.search);
+        refresh = (ImageView) view.findViewById(R.id.refreshBTN);
+        dataList = new ArrayList<>();
+        adapter = new ArrayAdapter<>(getActivity(), R.layout.list_data_master, dataList);
         listView.setAdapter(adapter);
+        customFilter = new CustomFilter(dataList, adapter);
+
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getData();
+            }
+        });
+
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                customFilter.filter(s);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         //jam realtime
         Handler handler = new Handler();
@@ -111,7 +146,7 @@ public class HistoryFragment extends Fragment {
                                                                     "Gangguan: " + jsonObject.getString("gangguan") + "\n" +
                                                                     "Tahun Buat: " + jsonObject.getString("tahun_buat") + "\n" +
                                                                     "Tahun Ganti: " + jsonObject.getString("tahun_ganti") + "\n" +
-                                                                    "Data Dibuat: " + jsonObject.getString("data_dibuat");
+                                                                    "Tanggal Pendataan: " + jsonObject.getString("tanggal_pendataan");
                                                             dataList.add(data);
                                                         }
                                                         progressBar.setVisibility(View.GONE);

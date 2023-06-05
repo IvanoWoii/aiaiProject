@@ -12,10 +12,13 @@ import android.net.Network;
 import android.net.NetworkCapabilities;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -37,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText username, password;
     Button login;
     TextView btn_reg;
+    CheckBox checkBoxShowPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +51,26 @@ public class LoginActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.passwordEditText);
         login = (Button) findViewById(R.id.loginButton);
         btn_reg = (TextView) findViewById(R.id.btn_reg);
+        checkBoxShowPassword = (CheckBox) findViewById(R.id.checkBoxShowPassword);
 
         if (SharedPrefManager.getInstance(this).isLoggedIn()) {
             finish();
             startActivity(new Intent(this, DashboardActivity.class));
         }
+
+        checkBoxShowPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                } else {
+                    password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                }
+
+                password.setSelection(password.getText().length());
+
+            }
+        });
 
         btn_reg.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -128,7 +128,7 @@ public class LihatDataFragment extends Fragment {
                                 String hasilGangguan = dataJson.getString("gangguan");
                                 String hasilTahunBuat = dataJson.getString("tahun_buat");
                                 String hasilTahunGanti = dataJson.getString("tahun_ganti");
-                                String hasilDataDibuat = dataJson.getString("data_dibuat");
+                                String hasilDataDibuat = dataJson.getString("tanggal_pendataan");
 
                                 textHasilNoMeter.setText(hasilNoMeter);
                                 if(hasilKriteriaGaransi.equals("Garansi")){

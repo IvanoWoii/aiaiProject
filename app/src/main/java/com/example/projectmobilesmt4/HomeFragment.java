@@ -19,8 +19,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,7 +49,9 @@ import java.util.Map;
 
 public class HomeFragment extends Fragment {
    Button btn_scan,btn_tambahData;
-   EditText nomor_meter,kriteria_garansi,gangguan,tahun_buat,tahun_ganti_meter;
+   EditText nomor_meter,gangguan,tahun_buat,tahun_ganti_meter;
+   Spinner kriteria_garansi;
+   String selectedValue;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -57,10 +62,27 @@ public class HomeFragment extends Fragment {
         btn_scan = (Button) view1.findViewById(R.id.btn_scan);
         btn_tambahData = (Button) view1.findViewById(R.id.btn_tambahData);
         nomor_meter = (EditText) view1.findViewById(R.id.txt_nomorMeter);
-        kriteria_garansi = (EditText) view1.findViewById(R.id.txt_kriteriaGaransi);
+        kriteria_garansi = (Spinner) view1.findViewById(R.id.txt_kriteriaGaransi);
         gangguan = (EditText) view1.findViewById(R.id.txt_gangguan);
         tahun_buat = (EditText) view1.findViewById(R.id.txt_tahunBuat);
         tahun_ganti_meter = (EditText) view1.findViewById(R.id.txt_tahunGantiMeter);
+
+        String[] items = {"-- pilih opsi --","Garansi","Tidak Garansi"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_dropdown_item, items);
+        kriteria_garansi.setAdapter(adapter);
+
+        kriteria_garansi.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selectedValue = kriteria_garansi.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
 
         btn_scan.setOnClickListener(view -> {
             scanCode();
@@ -94,7 +116,7 @@ public class HomeFragment extends Fragment {
 
     private void tambahData(){
         final String sNomor_meter = nomor_meter.getText().toString().trim();
-        final String sKriteria_garansi = kriteria_garansi.getText().toString().trim();
+        final String sKriteria_garansi = selectedValue;
         final String sGangguan = gangguan.getText().toString().trim();
         final String sTahun_buat = tahun_buat.getText().toString().trim();
         final String sTahun_ganti_meter = tahun_ganti_meter.getText().toString().trim();
@@ -112,8 +134,13 @@ public class HomeFragment extends Fragment {
             nomor_meter.requestFocus();
             return;
         }
-        if(TextUtils.isEmpty(sKriteria_garansi)){
-            kriteria_garansi.setError("pastikan berisi garansi / tidak garansi");
+        if(nomor_meter.length() > 11){
+            nomor_meter.setError("Nomor Meter Melebih 11 Karakter");
+            nomor_meter.requestFocus();
+            return;
+        }
+        if (selectedValue == "-- pilih opsi --"){
+            Toast.makeText(getActivity(), "Silahkan Pilih Opsi", Toast.LENGTH_SHORT).show();
             kriteria_garansi.requestFocus();
             return;
         }
@@ -144,8 +171,8 @@ public class HomeFragment extends Fragment {
                                 Toast.makeText(getActivity(), obj.getString("message"), Toast.LENGTH_SHORT).show();
 
                                 nomor_meter.setText("");
-                                kriteria_garansi.setText("");
                                 gangguan.setText("");
+                                kriteria_garansi.setSelection(0);
                                 tahun_buat.setText("");
                                 tahun_ganti_meter.setText("");
                             } else {
@@ -169,7 +196,7 @@ public class HomeFragment extends Fragment {
                 params.put("gangguan", sGangguan);
                 params.put("tahun_buat", sTahun_buat);
                 params.put("tahun_ganti", sTahun_ganti_meter);
-                params.put("data_dibuat", sDateSekarang);
+                params.put("tanggal_pendataan", sDateSekarang);
                 return params;
             }
         };

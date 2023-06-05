@@ -76,6 +76,15 @@
             android:drawableLeft="@drawable/ic_baseline_lock_24"
             android:drawablePadding="10dp"
             android:id="@+id/passwordEditText"/>
+        <CheckBox
+            android:id="@+id/checkBoxShowPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="25dp"
+            android:text="Tampilkan Password"
+            android:textColor="@color/black"/>
+
     </LinearLayout>
     <Button
         android:layout_width="wrap_content"

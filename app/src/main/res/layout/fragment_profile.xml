@@ -59,6 +59,14 @@
         android:fontFamily="@font/poppinsmedium"
         android:textSize="15sp"/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/logoProfile"
+        android:background="@color/abu" />
+
+
     <TextView
         android:id="@+id/settingProfile"
         android:layout_width="wrap_content"
