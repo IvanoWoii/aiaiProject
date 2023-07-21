@@ -157,13 +157,18 @@
                     android:textColor="@color/black"
                     app:cornerRadius="20dp"
                     android:layout_gravity="center"/>
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal" />
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:id="@+id/btn_tambahData"
                     android:text="Tambah Data"
                     android:textSize="18sp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="5dp"
                     android:backgroundTint="@color/biru_second"
                     android:textColor="@color/black"
                     app:cornerRadius="20dp" />

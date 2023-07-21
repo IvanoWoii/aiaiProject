@@ -22,7 +22,7 @@
         android:id="@+id/logoUtama"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:src="@drawable/logosmt4"
+        android:src="@drawable/simakmur"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,11 +32,11 @@
         android:id="@+id/logoUtamaHitam"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:src="@drawable/logosmt4"
+        android:src="@drawable/simakmur"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/white" />
+        app:tint="@color/zxing_transparent" />
 
 </androidx.constraintlayout.motion.widget.MotionLayout>

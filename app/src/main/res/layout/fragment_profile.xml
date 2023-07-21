@@ -20,7 +20,9 @@
         android:layout_height="150dp"
         android:layout_below="@+id/bulatProfile"
         android:layout_marginLeft="20dp"
-        android:src="@drawable/logosmt4"
+        android:src="@drawable/simakmur"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:background="@drawable/bg_pp"/>
 
     <TextView
@@ -34,7 +36,7 @@
         android:text="username_profile"
         android:textColor="@color/white"
         android:fontFamily="@font/poppinsbold"
-        android:textSize="20sp"/>
+        android:textSize="18sp"/>
 
     <TextView
         android:id="@+id/emailProfile"
@@ -46,7 +48,7 @@
         android:text="email_profile"
         android:textColor="@color/white"
         android:fontFamily="@font/poppinsmedium"
-        android:textSize="15sp"/>
+        android:textSize="12sp"/>
     <TextView
         android:id="@+id/unitIndukProfile"
         android:layout_width="wrap_content"
@@ -57,7 +59,7 @@
         android:text="noinduk_profile"
         android:textColor="@color/white"
         android:fontFamily="@font/poppinsmedium"
-        android:textSize="15sp"/>
+        android:textSize="12sp"/>
 
     <View
         android:layout_width="match_parent"

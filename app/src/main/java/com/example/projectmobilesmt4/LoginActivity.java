@@ -121,8 +121,8 @@ public class LoginActivity extends AppCompatActivity {
 
                                 User user = new User(
                                         userJson.getString("kode_user"),
-                                        userJson.getString("nama"),
                                         userJson.getString("username"),
+                                        userJson.getString("nama"),
                                         userJson.getString("unit_induk")
                                 );
 

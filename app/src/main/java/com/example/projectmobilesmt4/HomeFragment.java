@@ -1,5 +1,6 @@
 package com.example.projectmobilesmt4;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,6 +25,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,6 +55,7 @@ public class HomeFragment extends Fragment {
    EditText nomor_meter,gangguan,tahun_buat,tahun_ganti_meter;
    Spinner kriteria_garansi;
    String selectedValue;
+   ProgressBar progressBar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,6 +70,9 @@ public class HomeFragment extends Fragment {
         gangguan = (EditText) view1.findViewById(R.id.txt_gangguan);
         tahun_buat = (EditText) view1.findViewById(R.id.txt_tahunBuat);
         tahun_ganti_meter = (EditText) view1.findViewById(R.id.txt_tahunGantiMeter);
+        progressBar = (ProgressBar) view1.findViewById(R.id.progressBar);
+
+        progressBar.setVisibility(View.GONE);
 
         String[] items = {"-- pilih opsi --","Garansi","Tidak Garansi"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_dropdown_item, items);
@@ -91,12 +98,41 @@ public class HomeFragment extends Fragment {
         btn_tambahData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                tambahData();
+                showAlertDialogWithProgressDialog();
             }
         });
 
         return view1;
+    }
+
+    private void showAlertDialogWithProgressDialog(){
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+        builder.setTitle("Cek Data");
+        builder.setMessage("Cek Data Apakah Sudah Benar?");
+        builder.setPositiveButton("Sudah Benar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                progressBar.setVisibility(View.VISIBLE);
+                tambahData();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        progressBar.setVisibility(View.GONE);
+                    }
+                }, 2000);
+            }
+        });
+        builder.setNegativeButton("Cek lagi", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                progressBar.setVisibility(View.GONE);
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 
     private void scanCode() {
